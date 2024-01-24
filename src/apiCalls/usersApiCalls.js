@@ -5,7 +5,7 @@ axios.defaults.withCredentials = true;
 export const signup = async (dispatchUsers, data) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/users/signup",
+      "https://record-shop-server-b203.onrender.com/users/signup",
       data
     );
 
@@ -18,7 +18,7 @@ export const signup = async (dispatchUsers, data) => {
 export const login = async (dispatchUsers, data) => {
   try {
     const response = await axios.post(
-      "http://localhost:8000/users/login",
+      "https://record-shop-server-b203.onrender.com/users/login",
       data
     );
 
@@ -30,7 +30,9 @@ export const login = async (dispatchUsers, data) => {
 
 export const logout = async (dispatchUsers) => {
   try {
-    await axios.get("http://localhost:8000/users/logout");
+    await axios.get(
+      "https://record-shop-server-b203.onrender.com/users/logout"
+    );
     dispatchUsers({ type: "LOGOUT" });
   } catch (error) {
     console.log(error);
@@ -39,7 +41,9 @@ export const logout = async (dispatchUsers) => {
 
 export const getMyData = async (dispatchUsers) => {
   try {
-    const response = await axios.get("http://localhost:8000/users/me");
+    const response = await axios.get(
+      "https://record-shop-server-b203.onrender.com/users/me"
+    );
 
     if (response.data && response.data.isAuthenticated) {
       dispatchUsers({ type: "LOGIN_SUCCESS", payload: response.data });
